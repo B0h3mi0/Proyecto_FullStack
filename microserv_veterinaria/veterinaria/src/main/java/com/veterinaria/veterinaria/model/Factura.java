@@ -9,7 +9,13 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 @Entity //Definicion de TABLA FACTURA
 @Table(name = "factura")
@@ -61,7 +67,7 @@ public class Factura { // clase FacturaVet
         this.nom_dueño = nom_dueño;
     } */
 // GETTERS clase FacturaVet
-    public long getId_factura() {
+    /* public long getId_factura() {
         return id_factura;
     }
 
@@ -115,5 +121,5 @@ public class Factura { // clase FacturaVet
     }
     public void setNom_dueño(String nom_dueño) {
         this.nom_dueño = nom_dueño;
-    }
+    } */
 }

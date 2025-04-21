@@ -9,7 +9,14 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity //Definicion de TABLA EVENTO
 @Table(name = "evento")
 public class Evento { //clase Evento
@@ -25,6 +32,7 @@ public class Evento { //clase Evento
 
     @NotNull
     @Column(name = "descripcion")
+    @Size(max=150)
     private String descripcion;
 
     @NotNull
@@ -52,7 +60,7 @@ public class Evento { //clase Evento
  */
 // GETTERS clase evento
 
-    public long getId_evento() {
+   /*  public long getId_evento() {
         return id_evento;
     }
 
@@ -98,7 +106,7 @@ public class Evento { //clase Evento
     public void setCoordinador_evento(String coordinador_evento) {
         this.coordinador_evento = coordinador_evento;
     }
-
+ */
 
 
 }
