@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +59,7 @@ public class EventoController {
     }
 
     @PostMapping()
-    public ResponseEntity<Evento> creaEvento(@RequestBody Evento evento) {
+    public ResponseEntity<Evento> createEvento(@RequestBody Evento evento) {
         logger.info("Creating a new evento with request: {}", evento);
         Evento savedEvento = eventoService.createEvento(evento);
         logger.info("Evento created successfully. evento ID: {}", savedEvento.getId_evento());
