@@ -1,5 +1,6 @@
 package com.evento.evento.model;
 
+import org.springframework.hateoas.RepresentationModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Pattern;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity //Definicion de TABLA EVENTO
 @Table(name = "evento")
-public class Evento { //clase Evento
+public class Evento extends RepresentationModel<Evento>{ //clase Evento
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +37,7 @@ public class Evento { //clase Evento
 
     @NotNull(message = "Campo no puede ser nulo")
     @Column(name = "descripcion")
-    @Size(min = 30, max = 150 , message = "La descripcion debe tener un minimo de 30 caracteres y un maximo de 150")
+    @Size(min = 30, max = 300 , message = "La descripcion debe tener un minimo de 30 caracteres y un maximo de 300")
     private String descripcion;
 
     @NotNull(message = "Campo no puede ser nulo")

@@ -19,7 +19,7 @@ public class EventoUpdateRequest {
 
     @NotNull(message = "Campo no puede ser nulo")
     @Column(name = "descripcion")
-    @Size(min = 30, max = 150 , message = "La descripcion debe tener un minimo de 30 caracteres y un maximo de 150")
+    @Size(min = 30, max = 300 , message = "La descripcion debe tener un minimo de 30 caracteres y un maximo de 300")
     private String descripcion;
 
     @NotNull(message = "Campo no puede ser nulo")
