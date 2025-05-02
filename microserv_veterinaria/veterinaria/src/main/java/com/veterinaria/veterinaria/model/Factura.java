@@ -1,5 +1,7 @@
 package com.veterinaria.veterinaria.model;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 @Entity //Definicion de TABLA FACTURA
 @Table(name = "factura")
-public class Factura { // clase FacturaVet 
+public class Factura extends RepresentationModel<Factura> { // clase FacturaVet 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_factura" )
