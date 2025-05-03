@@ -1,0 +1,12 @@
+com\veterinaria\veterinaria\controller\FacturaController$ErrorResponse.class
+com\veterinaria\veterinaria\api\request\FacturaUpdateRequest.class
+com\veterinaria\veterinaria\exceptionhandler\GlobalExceptionHandler.class
+com\veterinaria\veterinaria\model\Factura.class
+com\veterinaria\veterinaria\repository\FacturaRepository.class
+com\veterinaria\veterinaria\controller\FacturaNotFoundException.class
+com\veterinaria\veterinaria\exceptionhandler\DatabaseTransactionException.class
+com\veterinaria\veterinaria\VeterinariaApplication.class
+com\veterinaria\veterinaria\controller\FacturaController.class
+com\veterinaria\veterinaria\service\FacturaServiceImpl.class
+com\veterinaria\veterinaria\exceptionhandler\ResourceNotFoundException.class
+com\veterinaria\veterinaria\service\FacturaService.class

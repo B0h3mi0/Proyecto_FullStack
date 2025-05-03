@@ -1,0 +1,12 @@
+com\evento\evento\service\EventoServiceImpl.class
+com\evento\evento\api\request\EventoUpdateRequest.class
+com\evento\evento\model\Evento.class
+com\evento\evento\exceptionhandler\DatabaseTransactionException.class
+com\evento\evento\exceptionhandler\ResourceNotFoundException.class
+com\evento\evento\controller\EventoNotFoundException.class
+com\evento\evento\exceptionhandler\GlobalExceptionHandler.class
+com\evento\evento\controller\EventoController.class
+com\evento\evento\repository\EventoRepository.class
+com\evento\evento\EventoApplication.class
+com\evento\evento\controller\EventoController$ErrorResponse.class
+com\evento\evento\service\EventoService.class

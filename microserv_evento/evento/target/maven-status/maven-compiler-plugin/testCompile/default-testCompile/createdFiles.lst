@@ -1,0 +1,4 @@
+com\evento\evento\service\EventoServiceTest.class
+com\evento\evento\repository\EventoRepositoryTest.class
+com\evento\evento\EventoApplicationTests.class
+com\evento\evento\controller\EventoControllerTest.class

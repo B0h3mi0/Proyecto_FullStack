@@ -1,0 +1,4 @@
+com\veterinaria\veterinaria\service\FacturaServiceTest.class
+com\veterinaria\veterinaria\controller\FacturaControllerTest.class
+com\veterinaria\veterinaria\VeterinariaApplicationTests.class
+com\veterinaria\veterinaria\repository\FacturaRepositoryTest.class
