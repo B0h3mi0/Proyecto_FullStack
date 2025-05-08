@@ -25,13 +25,13 @@ public class EventoServiceTest {
     public void guardarEvento(){
 
         Evento evento = new Evento();
-        evento.setNom_evento("Los piratas del caribe");
+        evento.setNom_evento("Pet chile evento");
 
         when(eventoRepositoryMock.save(any())).thenReturn(evento);
 
         Evento resultado = eventoServicio.createEvento(evento);
 
-        assertEquals("Los piratas del caribe", resultado.getNom_evento());
+        assertEquals("Pet chile evento", resultado.getNom_evento());
 
     }
 }

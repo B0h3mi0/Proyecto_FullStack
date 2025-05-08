@@ -15,6 +15,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -101,19 +102,19 @@ public class FacturaController {
     } */
     
     @PostMapping
-    public EntityModel<Factura> createFactura(@Validated @RequestBody Factura factura) {
+    public ResponseEntity<EntityModel<Factura>> createFactura(@Validated @RequestBody Factura factura) {
         Factura createdFactura = facturaService.createFactura(factura);
-            return EntityModel.of(createdFactura,
+            EntityModel<Factura> model = EntityModel.of(createdFactura,
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getFacturaById(createdFactura.getId_factura())).withSelfRel(),
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllFacturas()).withRel("all-facturas"));
-
+        return ResponseEntity.status(HttpStatus.CREATED).body(model);
     }
 
     /* @PatchMapping("/{id}")
     public ResponseEntity<Factura> patchFactura(@PathVariable Long id, @RequestBody FacturaUpdateRequest updateRequest) {
         logger.info("Updating a factura with ID: {} and request: {}", id, updateRequest);
         Factura updatedFactura = facturaService.updateFactura(id, updateRequest);
-        logger.info("Factura updated successfully. User ID: {}", updatedFactura.getId_factura());
+        logger.info("Factura updated successfully. Factura ID: {}", updatedFactura.getId_factura());
         return new ResponseEntity<>(updatedFactura, HttpStatus.OK);
     } */
 
@@ -135,9 +136,10 @@ public class FacturaController {
     } */
 
     @DeleteMapping("/{id}")
-    public void deleteFactura(@PathVariable Long id){
+        public ResponseEntity<Void> deleteFactura(@PathVariable Long id) {
         facturaService.deleteFacturaById(id);
-    } 
+        return ResponseEntity.noContent().build(); // HTTP 204 No Content
+    }
 
     static class ErrorResponse {
         private final String message;
