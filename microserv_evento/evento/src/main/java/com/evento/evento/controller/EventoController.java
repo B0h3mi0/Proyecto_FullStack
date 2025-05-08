@@ -94,12 +94,12 @@ public class EventoController {
     } */
 
     @PostMapping
-    public ResponseEntity<EntityModel<Evento>> createEvento(@Validated @RequestBody Evento evento) {
+    public EntityModel<Evento> createEvento(@Validated @RequestBody Evento evento) {
         Evento createdEvento = eventoService.createEvento(evento);
-        EntityModel<Evento> model = EntityModel.of(createdEvento,
-            WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getEventoById(createdEvento.getId_evento())).withSelfRel(),
-            WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllEventos()).withRel("all-eventos"));
-        return ResponseEntity.status(HttpStatus.CREATED).body(model);
+            return EntityModel.of(createdEvento,
+                WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getEventoById(createdEvento.getId_evento())).withSelfRel(),
+                WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllEventos()).withRel("all-eventos"));
+
     }
 
     /* @PostMapping()
@@ -129,9 +129,8 @@ public class EventoController {
     }
  */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEvento(@PathVariable Long id){
+    public void deleteEvento(@PathVariable Long id){
         eventoService.deleteEventoById(id);
-        return ResponseEntity.noContent().build();
     } 
 
     static class ErrorResponse {

@@ -46,29 +46,24 @@ public class EventoControllerTest {
         // Arrange
         when(eventoService.createEvento(any(Evento.class))).thenReturn(evento);
 
-        // Act
-        ResponseEntity<EntityModel<Evento>> response = eventoController.createEvento(evento);
+        EntityModel<Evento> response = eventoController.createEvento(evento);
 
-        // Assert
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        EntityModel<Evento> savedEventoModel = response.getBody();
-        assertNotNull(savedEventoModel);
-        assertEquals(evento.getId_evento(), savedEventoModel.getContent().getId_evento());
-        assertTrue(savedEventoModel.hasLink("self"));
-        verify(eventoService).createEvento(any(Evento.class));
+        assertNotNull(response);
+        assertEquals(evento.getId_evento(), response.getContent().getId_evento());
+        assertTrue(response.hasLink("self"));
     }
 
     @Test
     void deleteEvento() {
         // Arrange
-        doNothing().when(eventoService).deleteEventoById(1L);
+        Long id = 1L;
+        doNothing().when(eventoService).deleteEventoById(id);
 
         // Act
-        ResponseEntity<Void> response = eventoController.deleteEvento(1L);
+        eventoController.deleteEvento(id);
 
         // Assert
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        verify(eventoService).deleteEventoById(1L);
-    }
+        verify(eventoService).deleteEventoById(id);
+}
     
 }

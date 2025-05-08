@@ -23,7 +23,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
-import org.junit.jupiter.api.BeforeEach;
 
 @ExtendWith(MockitoExtension.class)
 public class FacturaControllerTest {
@@ -54,28 +53,23 @@ public class FacturaControllerTest {
         // Arrange
         when(facturaService.createFactura(any(Factura.class))).thenReturn(factura);
 
-        // Act
-        ResponseEntity<EntityModel<Factura>> response = facturaController.createFactura(factura);
+        EntityModel<Factura> response = facturaController.createFactura(factura);
 
-        // Assert
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        EntityModel<Factura> savedFacturaModel = response.getBody();
-        assertNotNull(savedFacturaModel);
-        assertEquals(factura.getId_factura(), savedFacturaModel.getContent().getId_factura());
-        assertTrue(savedFacturaModel.hasLink("self"));
-        verify(facturaService).createFactura(any(Factura.class));
+        assertNotNull(response);
+        assertEquals(factura.getId_factura(), response.getContent().getId_factura());
+        assertTrue(response.hasLink("self"));
     }
 
     @Test
     void deleteFactura() {
         // Arrange
-        doNothing().when(facturaService).deleteFacturaById(1L);
+        Long id = 1L;
+        doNothing().when(facturaService).deleteFacturaById(id);
 
         // Act
-        ResponseEntity<Void> response = facturaController.deleteFactura(1L);
+        facturaController.deleteFactura(id);
 
         // Assert
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        verify(facturaService).deleteFacturaById(1L);
-    }
+        verify(facturaService).deleteFacturaById(id);
+}
 }

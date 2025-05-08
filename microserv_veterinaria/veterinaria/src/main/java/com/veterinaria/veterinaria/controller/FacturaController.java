@@ -102,12 +102,12 @@ public class FacturaController {
     } */
     
     @PostMapping
-    public ResponseEntity<EntityModel<Factura>> createFactura(@Validated @RequestBody Factura factura) {
+    public EntityModel<Factura> createFactura(@Validated @RequestBody Factura factura) {
         Factura createdFactura = facturaService.createFactura(factura);
-            EntityModel<Factura> model = EntityModel.of(createdFactura,
+            return EntityModel.of(createdFactura,
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getFacturaById(createdFactura.getId_factura())).withSelfRel(),
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllFacturas()).withRel("all-facturas"));
-        return ResponseEntity.status(HttpStatus.CREATED).body(model);
+
     }
 
     /* @PatchMapping("/{id}")
@@ -136,9 +136,8 @@ public class FacturaController {
     } */
 
     @DeleteMapping("/{id}")
-        public ResponseEntity<Void> deleteFactura(@PathVariable Long id) {
+        public void deleteFactura(@PathVariable Long id) {
         facturaService.deleteFacturaById(id);
-        return ResponseEntity.noContent().build(); // HTTP 204 No Content
     }
 
     static class ErrorResponse {
